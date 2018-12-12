@@ -115,7 +115,6 @@ export default {
     trackBy: {
       type: String
     },
-
     /**
      * Label to look for in option Object
      * @default 'label'
@@ -337,6 +336,7 @@ export default {
     filteredOptions() {
       const search = this.search || ''
       const normalizedSearch = search.toLowerCase().trim()
+      console.log("opt", options)
       let options = this.options.concat()
 
       /* istanbul ignore else */
@@ -564,8 +564,7 @@ export default {
 
         this.$emit('input', newValue, this.id)
       } else {
-        //this.isOptionDisabled || here
-        const optionsToAdd = group[this.groupValues].filter(not(!this.isOptionDisabled || this.isSelected))
+        const optionsToAdd = group[this.groupValues].filter(not(this.isOptionDisabled || this.isSelected))
 
         this.$emit('select', optionsToAdd, this.id)
         this.$emit(
@@ -581,8 +580,7 @@ export default {
      * @param {Object} group to validated selected values against
      */
     wholeGroupSelected(group) {
-      //|| this.isOptionDisabled(option)
-      return group[this.groupValues].every(option => this.isSelected(option) || !this.isOptionDisabled(option))
+      return group[this.groupValues].every(option => this.isSelected(option) || this.isOptionDisabled(option))
     },
     /**
      * Helper to identify if all values in a group are disabled
