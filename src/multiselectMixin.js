@@ -475,9 +475,7 @@ export default {
      * @returns {Boolean} returns true if element is disabled
      */
     isOptionDisabled(option) {
-      console.log("OPTION" + option)
-      console.log(JSON.stringify(option))
-      return !!this.dis
+      return !!option.isDisabled
     },
     /**
      * Returns empty string when options is null/undefined
@@ -515,7 +513,7 @@ export default {
       }
       if (this.blockKeys.indexOf(key) !== -1 ||
         this.disabled ||
-        this.dis ||
+        option.isDisabled ||
         option.$isLabel
       ) return
       /* istanbul ignore else */
@@ -568,12 +566,9 @@ export default {
         const newValue = this.internalValue.filter(
           option => group[this.groupValues].indexOf(option) === -1
         )
-        console.log("opt 1" + option)
-        console.log("opt 14" + JSON.stringify(option))
+
         this.$emit('input', newValue, this.id)
       } else {
-        console.log("opt 2" + option)
-        console.log("opt 2" + JSON.stringify(option))
         const optionsToAdd = group[this.groupValues].filter(not(this.isOptionDisabled || this.isSelected))
 
         this.$emit('select', optionsToAdd, this.id)

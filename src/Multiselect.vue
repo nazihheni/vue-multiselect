@@ -110,7 +110,7 @@
               :key="index"
             >
               <span
-                v-if="!(option && (option.$isLabel || this.dis))"
+                v-if="!(option && (option.$isLabel || option.isDisabled))"
                 :class="optionHighlight(index, option)"
                 @click.stop="select(option)"
                 @mouseenter.self="pointerSet(index)"
@@ -124,7 +124,7 @@
                 </slot>
               </span>
               <span
-                v-if="option && (option.$isLabel || this.dis)"
+                v-if="option && (option.$isLabel || option.isDisabled)"
                 :data-select="groupSelect && selectGroupLabelText"
                 :data-deselect="groupSelect && deselectGroupLabelText"
                 :class="groupHighlight(index, option)"
