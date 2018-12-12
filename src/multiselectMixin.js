@@ -115,6 +115,11 @@ export default {
     trackBy: {
       type: String
     },
+
+    dis: {
+      type: Boolean,
+      default: false
+    },
     /**
      * Label to look for in option Object
      * @default 'label'
@@ -336,7 +341,7 @@ export default {
     filteredOptions() {
       const search = this.search || ''
       const normalizedSearch = search.toLowerCase().trim()
-
+      console.log("opt", options)
       let options = this.options.concat()
 
       /* istanbul ignore else */
@@ -472,7 +477,7 @@ export default {
     isOptionDisabled(option) {
       console.log("OPTION" + option)
       console.log(JSON.stringify(option))
-      return !!option.isDisabled
+      return !!this.dis
     },
     /**
      * Returns empty string when options is null/undefined
@@ -510,7 +515,7 @@ export default {
       }
       if (this.blockKeys.indexOf(key) !== -1 ||
         this.disabled ||
-        option.isDisabled ||
+        this.dis ||
         option.$isLabel
       ) return
       /* istanbul ignore else */
