@@ -103,7 +103,7 @@ export default {
      */
     value: {
       type: null,
-      default () {
+      default() {
         return []
       }
     },
@@ -194,7 +194,7 @@ export default {
      */
     customLabel: {
       type: Function,
-      default (option, label) {
+      default(option, label) {
         if (isEmpty(option)) return ''
         return label ? option[label] : option
       }
@@ -292,7 +292,7 @@ export default {
      */
     blockKeys: {
       type: Array,
-      default () {
+      default() {
         return []
       }
     },
@@ -384,8 +384,8 @@ export default {
       return this.multiple ?
         this.searchable ? '' : this.placeholder :
         this.internalValue.length ?
-        this.getOptionLabel(this.internalValue[0]) :
-        this.searchable ? '' : this.placeholder
+          this.getOptionLabel(this.internalValue[0]) :
+          this.searchable ? '' : this.placeholder
     }
   },
   watch: {
@@ -409,8 +409,8 @@ export default {
       return this.multiple ?
         this.internalValue :
         this.internalValue.length === 0 ?
-        null :
-        this.internalValue[0]
+          null :
+          this.internalValue[0]
     },
     /**
      * Filters and then flattens the options list
@@ -564,9 +564,12 @@ export default {
 
         this.$emit('input', newValue, this.id)
       } else {
-        const optionsToAdd = group[this.groupValues].filter(not(this.isOptionDisabled || this.isSelected))
 
+        //this.isOptionDisabled || 
+        const optionsToAdd = group[this.groupValues].filter(not(this.isSelected))
+        console.log("optionsToAdd " + optionsToAdd)
         this.$emit('select', optionsToAdd, this.id)
+        console.log("this.id " + this.id)
         this.$emit(
           'input',
           this.internalValue.concat(optionsToAdd),
@@ -580,6 +583,7 @@ export default {
      * @param {Object} group to validated selected values against
      */
     wholeGroupSelected(group) {
+      console.log("group" + JSON.stringify(group))
       //|| this.isOptionDisabled(option)
       return group[this.groupValues].every(option => this.isSelected(option))
     },
