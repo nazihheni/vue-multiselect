@@ -568,7 +568,7 @@ export default {
 
         this.$emit('input', newValue, this.id)
       } else {
-        //this.isOptionDisabled ||
+        //this.isOptionDisabled || here
         const optionsToAdd = group[this.groupValues].filter(not(this.isSelected))
 
         this.$emit('select', optionsToAdd, this.id)
@@ -586,7 +586,7 @@ export default {
      */
     wholeGroupSelected(group) {
       //|| this.isOptionDisabled(option)
-      return group[this.groupValues].every(option => this.isSelected(option))
+      return group[this.groupValues].every(option => this.isSelected(option) || this.isOptionDisabled(option))
     },
     /**
      * Helper to identify if all values in a group are disabled
