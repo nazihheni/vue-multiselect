@@ -336,7 +336,7 @@ export default {
     filteredOptions() {
       const search = this.search || ''
       const normalizedSearch = search.toLowerCase().trim()
-      console.log("opt", options)
+     
       let options = this.options.concat()
 
       /* istanbul ignore else */
@@ -567,9 +567,9 @@ export default {
 
         //this.isOptionDisabled || 
         const optionsToAdd = group[this.groupValues].filter(not(this.isSelected))
-        console.log("optionsToAdd " + optionsToAdd)
+     
         this.$emit('select', optionsToAdd, this.id)
-        console.log("this.id " + this.id)
+       
         this.$emit(
           'input',
           this.internalValue.concat(optionsToAdd),
@@ -583,7 +583,7 @@ export default {
      * @param {Object} group to validated selected values against
      */
     wholeGroupSelected(group) {
-      console.log("group" + JSON.stringify(group))
+    
       //|| this.isOptionDisabled(option)
       return group[this.groupValues].every(option => this.isSelected(option))
     },
