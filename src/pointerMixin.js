@@ -46,7 +46,7 @@ export default {
     groupHighlight(index, selectedGroup) {
       if (!this.groupSelect) {
         //multiselect__option--disabled
-        return ['multiselect__option--group']
+        return ['multiselect__option--group', 'multiselect__option--disabled']
       }
 
       const group = this.options.find(option => {
@@ -61,7 +61,7 @@ export default {
         {
           'multiselect__option--group-selected': this.wholeGroupSelected(group)
         }
-      ] : 'multiselect__option--disabled'
+      ] : ''
     },
     addPointerElement({
       key
