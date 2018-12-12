@@ -109,8 +109,9 @@
               v-for="(option, index) of filteredOptions"
               :key="index"
             >
+              <!--|| option.isDisabled -->
               <span
-                v-if="!(option && (option.$isLabel || option.isDisabled))"
+                v-if="!(option && (option.$isLabel ))"
                 :class="optionHighlight(index, option)"
                 @click.stop="select(option)"
                 @mouseenter.self="pointerSet(index)"
@@ -123,9 +124,8 @@
                   <span>{{ getOptionLabel(option) }}</span>
                 </slot>
               </span>
-              <!--|| option.isDisabled-->
               <span
-                v-if="option && (option.$isLabel )"
+                v-if="option && (option.$isLabel || option.isDisabled)"
                 :data-select="groupSelect && selectGroupLabelText"
                 :data-deselect="groupSelect && deselectGroupLabelText"
                 :class="groupHighlight(index, option)"
