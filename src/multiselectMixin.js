@@ -467,7 +467,7 @@ export default {
      * @returns {Boolean} returns true if element is disabled
      */
     isOptionDisabled (option) {
-      return !!option.$isDisabled
+      return !!option.isDisabled
     },
     /**
      * Returns empty string when options is null/undefined
@@ -505,7 +505,7 @@ export default {
       }
       if (this.blockKeys.indexOf(key) !== -1 ||
         this.disabled ||
-        option.$isDisabled ||
+        option.isDisabled ||
         option.$isLabel
       ) return
       /* istanbul ignore else */

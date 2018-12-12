@@ -99,7 +99,7 @@
             <template v-if="!max || internalValue.length < max">
               <li class="multiselect__element" v-for="(option, index) of filteredOptions" :key="index">
                 <span
-                  v-if="!(option && (option.$isLabel || option.$isDisabled))"
+                  v-if="!(option && (option.$isLabel || option.isDisabled))"
                   :class="optionHighlight(index, option)"
                   @click.stop="select(option)"
                   @mouseenter.self="pointerSet(index)"
@@ -112,7 +112,7 @@
                     </slot>
                 </span>
                 <span
-                  v-if="option && (option.$isLabel || option.$isDisabled)"
+                  v-if="option && (option.$isLabel || option.isDisabled)"
                   :data-select="groupSelect && selectGroupLabelText"
                   :data-deselect="groupSelect && deselectGroupLabelText"
                   :class="groupHighlight(index, option)"
