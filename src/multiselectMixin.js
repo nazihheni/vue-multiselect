@@ -580,7 +580,8 @@ export default {
      * @param {Object} group to validated selected values against
      */
     wholeGroupSelected(group) {
-      return group[this.groupValues].every(option => this.isSelected(option) || this.isOptionDisabled(option))
+      //|| this.isOptionDisabled(option)
+      return group[this.groupValues].every(option => this.isSelected(option))
     },
     /**
      * Helper to identify if all values in a group are disabled
