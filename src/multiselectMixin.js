@@ -116,10 +116,6 @@ export default {
       type: String
     },
 
-    dis: {
-      type: Boolean,
-      default: false
-    },
     /**
      * Label to look for in option Object
      * @default 'label'
@@ -569,7 +565,7 @@ export default {
         this.$emit('input', newValue, this.id)
       } else {
         //this.isOptionDisabled || here
-        const optionsToAdd = group[this.groupValues].filter(not(this.isSelected))
+        const optionsToAdd = group[this.groupValues].filter(not(!this.isOptionDisabled || this.isSelected))
 
         this.$emit('select', optionsToAdd, this.id)
         this.$emit(
@@ -586,7 +582,7 @@ export default {
      */
     wholeGroupSelected(group) {
       //|| this.isOptionDisabled(option)
-      return group[this.groupValues].every(option => this.isSelected(option) || this.isOptionDisabled(option))
+      return group[this.groupValues].every(option => this.isSelected(option) || !this.isOptionDisabled(option))
     },
     /**
      * Helper to identify if all values in a group are disabled
