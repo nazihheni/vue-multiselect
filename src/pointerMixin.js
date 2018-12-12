@@ -45,7 +45,6 @@ export default {
     },
     groupHighlight(index, selectedGroup) {
       if (!this.groupSelect) {
-        //multiselect__option--disabled
         return ['multiselect__option--group', 'multiselect__option--disabled']
       }
 
@@ -61,7 +60,7 @@ export default {
         {
           'multiselect__option--group-selected': this.wholeGroupSelected(group)
         }
-      ] : ''
+      ] : 'multiselect__option--disabled'
     },
     addPointerElement({
       key

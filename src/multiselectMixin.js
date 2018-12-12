@@ -588,7 +588,7 @@ export default {
      * @param {Object} group to check for disabled values
      */
     wholeGroupDisabled(group) {
-      return group[this.groupValues].every(this.isOptionDisabled)
+      return false; //group[this.groupValues].every(this.isOptionDisabled)
     },
     /**
      * Removes the given option from the selected options.
